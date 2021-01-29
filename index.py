@@ -4,7 +4,7 @@ import random
 from discord.ext import commands, tasks
 from itertools import cycle
 import os
-token = "Nzc4OTk0ODI2OTQyODczNjIw.X7aFdw.dcMHAmstnVfRIT74gRUuLUUcVyQ" 
+token = "<Your token here>" 
 '''
 set_token = input("Choose bot: ")
 if(set_token == "1"):
@@ -43,12 +43,12 @@ async def on_guild_join(guild):
     #prefixes[str(guild.id)]
 
 
-@client.command(aliases=["latency"])                                                                                                #<==Ping cmd
+@client.command(aliases=["latency"])
 async def ping(ctx):
     await ctx.send(f"Pong! {client.latency * 1000}ms")
 
 
-@client.command(aliases=['8ball', '8b'])                                                                                            #<==8Ball cmd
+@client.command(aliases=['8ball', '8b'])
 async def _8ball(ctx, *, question):
     responses = [
         'It is decidedly so.'           ,
@@ -80,7 +80,7 @@ async def _8ball(ctx, *, question):
     await ctx.send()
 
 
-@client.command()                                                                                                                   #<==Hyperlink cmd
+@client.command()
 async def hl(ctx, *, linkName, heading, link):
     hyperLink = discord.Embed(
         title='{linkName}',
@@ -92,20 +92,20 @@ async def hl(ctx, *, linkName, heading, link):
 
 
 
-@client.command()                                                                                                                   #<==Clear cmd
+@client.command()
 async def clear(ctx, amount = 5):
     await ctx.message.delete()
     await ctx.channel.purge(limit=amount)
 
 
 
-@client.command()                                                                                                                   #<==Kick cmd
+@client.command()
 async def kick(ctx, member : discord.Member, *, reason = None):
     await member.kick(reason = reason)
 
 
 
-@client.command()                                                                                                                   #<==Ban cmd
+@client.command()
 @commands.has_permissions(ban_members=True)
 async def ban(ctx, user : discord.Member, *, reason = "No Reason Specified"):
     await user.ban(reason = reason)
@@ -113,7 +113,7 @@ async def ban(ctx, user : discord.Member, *, reason = "No Reason Specified"):
 
 
 
-@client.command()                                                                                                                   #<==Unban cmd
+@client.command()
 async def unban(ctx, *, member):
     banned_users = await ctx.guild.bans()
     member_name, member_discriminator = member.split('#')
